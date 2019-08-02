@@ -148,7 +148,7 @@
 }
 .favoriteDetails{
   width: 150px;
-  height: 280px;
+  height: auto;
   font-family: Lato;
   box-shadow: 0 0 14px 0 rgba(0,0,0,.75);
   margin-right: 3px;
