@@ -21,6 +21,19 @@ class App extends React.Component {
         };
     }
 
+    deleteFromFavorites = (indexFavorite) => {
+        const {favorites} = this.state;
+        const afterDelete = favorites.filter((destination, index) => {
+            if (index === indexFavorite) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        })
+        this.setState({favorites: afterDelete})
+    }
+
     imageByIconNum = (weatherIcon) => {
         switch (weatherIcon) {
             case 1:
@@ -69,7 +82,8 @@ class App extends React.Component {
             <Route path="/" exact component={() => <Homepage imageByIconNum={this.imageByIconNum}
                                                              addToFavorites={this.addToFavorites}/>}/>
             <Route exact path="/favorites" exact
-                   component={() => <Favorites favorites={favorites} imageByIconNum={this.imageByIconNum}/>}/>
+                   component={() => <Favorites favorites={favorites} deleteFromFavorites={this.deleteFromFavorites}
+                                               imageByIconNum={this.imageByIconNum}/>}/>
         </Router>
     }
 }

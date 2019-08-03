@@ -1,17 +1,23 @@
 import React from 'react';
 import './App.css';
 import {Link} from 'react-router-dom'
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faWindowClose} from '@fortawesome/free-solid-svg-icons';
 
 export class Favorites extends React.Component {
 
-    render() {
-        const {favorites, imageByIconNum} = this.props;
 
+    render() {
+        const {favorites, imageByIconNum, deleteFromFavorites} = this.props;
+        library.add(faWindowClose)
         return <div className="Favorites">
             <h1 className="titlePage">Favorites</h1>
             <Link to="/"> <span className="favoritesButton">Homepage</span></Link>
             {favorites.length > 0 && <div className="favoriteSection">{favorites.map((dest, index) => {
                 return <div className="favoriteDetails" key={index}>
+                    <div className="xButton" onClick={() => deleteFromFavorites(index)}><FontAwesomeIcon
+                        icon="window-close"/></div>
                     <div className="imgForSpecificDayFavorite"><img src={imageByIconNum(dest.WeatherIcon)}
                                                                     className="imgForDayFavorite" alt="alt"/></div>
                     <div className="locationOfWeatherFavorite">{`${dest.city}, ${dest.country}`} </div>

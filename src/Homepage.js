@@ -34,7 +34,7 @@ class Homepage extends React.Component {
 
     getSuggestionValue = suggestion => {
         let {destinationToShow, weatherForWeek} = this.state;
-        fetch(`https://dataservice.accuweather.com/currentconditions/v1/${suggestion.Key}?apikey=gVJo9HGAD47KfDOKA4ecRERzZS6D0GfI &language=en-us&details=true`, {
+        fetch(`https://dataservice.accuweather.com/currentconditions/v1/${suggestion.Key}?apikey=cnun7WkTP43AKu6Y7eQIf9Ql9fGeb3Z4&language=en-us&details=true`, {
             method: 'GET',
         })
             .then(data => data.json())
@@ -44,7 +44,7 @@ class Homepage extends React.Component {
                 destinationToShow['country'] = suggestion.Country.LocalizedName;
                 this.setState({destinationToShow});
             })
-        fetch(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${suggestion.Key}?apikey=gVJo9HGAD47KfDOKA4ecRERzZS6D0GfI &language=en-us&details=true&metric=true`, {
+        fetch(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${suggestion.Key}?apikey=cnun7WkTP43AKu6Y7eQIf9Ql9fGeb3Z4&language=en-us&details=true&metric=true`, {
             method: 'GET',
         })
             .then(data => data.json())
@@ -65,7 +65,7 @@ class Homepage extends React.Component {
     };
 
     onSuggestionsFetchRequested = ({value}) => {
-        fetch(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=gVJo9HGAD47KfDOKA4ecRERzZS6D0GfI &q=${value}&language=en-us`, {
+        fetch(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=cnun7WkTP43AKu6Y7eQIf9Ql9fGeb3Z4&q=${value}&language=en-us`, {
             method: 'GET',
         })
             .then(data => data.json())
